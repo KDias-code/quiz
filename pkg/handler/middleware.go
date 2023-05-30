@@ -9,12 +9,12 @@ import (
 )
 
 const (
-	autharizationHeader = "Autharization"
+	authorizationHeader = "Authorization"
 	userCtx             = "userId"
 )
 
 func (h *Handler) userIdentity(c *gin.Context) {
-	header := c.GetHeader(autharizationHeader)
+	header := c.GetHeader(authorizationHeader)
 	if header == "" {
 		newErrorResponse(c, http.StatusUnauthorized, "empty auth header")
 		return
