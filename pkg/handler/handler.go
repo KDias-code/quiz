@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"github.com/KDias-code/pkg/service"
 	"github.com/gin-gonic/gin"
 	// "github.com/go-delve/delve/service"
 )
@@ -21,13 +22,13 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		user.POST("/sign-in", h.SignIn)
 	}
 
-	game := router.Group("/game", h.userIdentity)
-	{
-		start := router.Group("/start")
-		{
-			start.POST("/:id", h.quiz)
-		}
-	}
+	//game := router.Group("/game", h.userIdentity)
+	//{
+	//	start := router.Group("/start")
+	//	{
+	//		start.POST("/:id", h.quiz)
+	//	}
+	//}
 
 	return router
 }
