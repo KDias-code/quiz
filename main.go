@@ -1,7 +1,8 @@
-package user
+package main
 
 import (
 	"context"
+	"github.com/KDias-code"
 	"github.com/KDias-code/pkg/handler"
 	"github.com/KDias-code/pkg/repository"
 	"github.com/KDias-code/pkg/service"
@@ -42,14 +43,14 @@ func main() {
 	services := service.NewService(repos)
 	handlers := handler.NewHandler(services)
 
-	srv := new(Server)
+	srv := new(user.Server)
 	go func() {
 		if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
 			logrus.Fatalf("error occured while running http server: %s", err.Error())
 		}
 	}()
 
-	logrus.Print("TodoApp Started!")
+	logrus.Print("Quiz Started!")
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
